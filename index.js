@@ -8,6 +8,8 @@ const authPost=require("./routes/posts")
 const authCat=require("./routes/categories");
 const path = require("path");
 const multer = require("multer");
+const cors=require('cors')
+app.use(cors());
 dotenv.config()
 app.use(express.json())
 app.use("/images",express.static(path.join(__dirname,'/images')))
@@ -40,6 +42,8 @@ mongoose
     app.use('/users',authUser)
     app.use('/posts',authPost)
     app.use('/category',authCat)
-app.listen('5000', () => {
-    console.log("backend running")
-})
+
+const port = 5000;
+app.listen(port, () => {
+  console.log(`Server running on port http://localhost:${port}/`);
+});
