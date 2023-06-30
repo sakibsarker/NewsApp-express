@@ -43,7 +43,18 @@ mongoose
     app.use('/posts',authPost)
     app.use('/category',authCat)
 
-const port = 5000;
-app.listen(port, () => {
-  console.log(`Server running on port http://localhost:${port}/`);
-});
+// const port = 5000;
+// app.listen(port, () => {
+//   console.log(`Server running on port http://localhost:${port}/`);
+// });
+
+const port = process.env.PORT || 8080
+
+app.listen(port, (err, res) => {
+    if (err) {
+        console.log(err)
+        return res.status(500).send(err.message)
+    } else {
+        console.log('[INFO] Server Running on port:', port)
+    }
+})
